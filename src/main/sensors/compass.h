@@ -31,15 +31,16 @@
 typedef enum {
     MAG_NONE = 0,
     MAG_AUTODETECT = 1,
-    MAG_HMC5883 = 2,
-    MAG_AK8975 = 3,
-    MAG_GPS = 4,
-    MAG_MAG3110 = 5,
-    MAG_AK8963 = 6,
-    MAG_IST8310 = 7,
-    MAG_QMC5883 = 8,
-    MAG_MPU9250 = 9,
-    MAG_FAKE = 10,
+	MAG_LIS3MDL = 2,
+    MAG_HMC5883 = 3,
+    MAG_AK8975 = 4,
+    MAG_GPS = 5,
+    MAG_MAG3110 = 6,
+    MAG_AK8963 = 7,
+    MAG_IST8310 = 8,
+    MAG_QMC5883 = 9,
+    MAG_MPU9250 = 10,
+    MAG_FAKE = 11,
     MAG_MAX = MAG_FAKE
 } magSensor_e;
 

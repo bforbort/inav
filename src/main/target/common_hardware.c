@@ -104,6 +104,13 @@
     BUSDEV_REGISTER_I2C(busdev_hmc5883,     DEVHW_HMC5883,      HMC5883_I2C_BUS,    0x1E,               NONE,           DEVFLAGS_NONE);
 #endif
 
+#if defined(USE_MAG_LIS3MDL)
+    #if !defined(LIS3MDL_I2C_BUS)
+        #define LIS3MDL_I2C_BUS MAG_I2C_BUS
+    #endif
+    BUSDEV_REGISTER_I2C(busdev_lis3mdl,     DEVHW_LIS3MDL,      LIS3MDL_I2C_BUS,    0x1E,               NONE,           DEVFLAGS_NONE);
+#endif
+
 #if defined(USE_MAG_QMC5883)
     #if !defined(QMC5883_I2C_BUS)
         #define QMC5883_I2C_BUS MAG_I2C_BUS
