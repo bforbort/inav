@@ -107,15 +107,15 @@
 static bool lis3mdlRead(magDev_t * mag)
 {
     bool ack;
-	uint8_t status = 0;
+    uint8_t status = 0;
 
-	ack = busRead(mag->busDev, LIS3MDL_REG_STATUS_REG, &status);
+    ack = busRead(mag->busDev, LIS3MDL_REG_STATUS_REG, &status);
 
-	if ( !( ack && ( ( status & 0x08 ) >> 3 ) ) ) {
-		return false;
-	}
+    if ( !( ack && ( ( status & 0x08 ) >> 3 ) ) ) {
+        return false;
+    }
 
-	uint8_t buf[6];
+    uint8_t buf[6];
 
     ack = busReadBuf(mag->busDev, LIS3MDL_REG_OUT_X_L, buf, 6);
 
@@ -152,11 +152,17 @@ static bool deviceDetect(magDev_t * mag)
 
 static bool lis3mdlInit(magDev_t *mag)
 {
-	busWrite(mag->busDev, LIS3MDL_REG_CTRL_REG2, LIS3MDL_FS_4GAUSS);   // Configuration Register 2
+	delay(50);
+    busWrite(mag->busDev, LIS3MDL_REG_CTRL_REG2, LIS3MDL_FS_4GAUSS);   // Configuration Register 2
+    delay(5);
     busWrite(mag->busDev, LIS3MDL_REG_CTRL_REG1, LIS3MDL_TEMP_EN | LIS3MDL_OM_ULTRA_HI_PROF | LIS3MDL_DO_80);   // Configuration Register 1
+    delay(5);
     busWrite(mag->busDev, LIS3MDL_REG_CTRL_REG5, LIS3MDL_BDU);   // Configuration Register 5
+    delay(5);
     busWrite(mag->busDev, LIS3MDL_REG_CTRL_REG4, LIS3MDL_ZOM_UHP);   // Configuration Register 4
+    delay(5);
     busWrite(mag->busDev, LIS3MDL_REG_CTRL_REG3, 0x00);   // Configuration Register 3
+    delay(5);
 
     return true;
 }
